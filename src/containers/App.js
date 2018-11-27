@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {Root, View} from '@vkontakte/vkui';
+import {Root} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import MainView from './MainView';

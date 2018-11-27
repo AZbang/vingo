@@ -7,7 +7,7 @@ import { ConnectedRouter } from 'connected-react-router'
 import registerServiceWorker from './sw';
 import {store, history} from './store';
 import App from './containers/App';
-
+import './assets/theme.css';
 
 ReactDOM.render(
   <Provider store={store}>

@@ -6,5 +6,5 @@ import data from './data'
 
 export default (history) => combineReducers({
   router: connectRouter(history),
-  vk, loading
+  loading, data
 });
