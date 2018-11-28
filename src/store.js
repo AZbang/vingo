@@ -7,7 +7,7 @@ import rootSaga from './sagas'
 
 const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancer = compose;
 const store = createStore(
   createRootReducer(history),
   composeEnhancer(

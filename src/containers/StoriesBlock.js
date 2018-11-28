@@ -20,7 +20,7 @@ class StoriesBlock extends React.Component {
   render() {
     return (
       <HorizontalScroll>
-        <div style={{ display: 'flex', paddingBottom: '10px', margin: '40px 20px'}}>
+          <div style={{display: 'flex', paddingBottom: '10px', margin: '20px'}}>
           {this.getStoriesList(5)}
         </div>
       </HorizontalScroll>

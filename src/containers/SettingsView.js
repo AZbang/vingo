@@ -1,18 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {View, Panel} from '@vkontakte/vkui';
-
 import VingoHeader from '../components/VingoHeader';
-import StoriesBlock from './StoriesBlock';
-import MuseumsMapBlock from './MuseumsMapBlock';
 
-class MainView extends React.Component {
+class SettingsView extends React.Component {
   render = () => (
     <View id={this.props.id} activePanel={this.props.id}>
       <Panel id={this.props.id}>
-        <VingoHeader/>
-        <StoriesBlock/>
-        <MuseumsMapBlock/>
+        <VingoHeader></VingoHeader>
+        <h1 className="label" style={{marginTop: 20}}>Настройки</h1>
       </Panel>
     </View>
   )
@@ -22,4 +18,4 @@ function mapStateToProps(state) {
   return {}
 }
 
-export default connect(mapStateToProps)(MainView);
+export default connect(mapStateToProps)(SettingsView);

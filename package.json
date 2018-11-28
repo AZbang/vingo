@@ -9,6 +9,7 @@
     "@vkontakte/vkui-connect": "^1.1.2",
     "connected-react-router": "^5.0.1",
     "core-js": "^2.5.7",
+    "google-maps-react": "^2.0.2",
     "history": "^4.7.2",
     "imdb-api": "^4.0.2",
     "moviedb-promise": "^1.3.1",
