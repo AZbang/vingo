@@ -1,25 +1,26 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Map, GoogleApiWrapper} from 'google-maps-react';
-import {GOOGLE_MAP_API} from '../env';
+import {push} from 'connected-react-router';
+import MuseumsMap from '../components/MuseumsMap';
 
 export class MuseumsMapBlock extends React.Component {
+  openPlayground = (id) =>
+    this.props.dispatch(push('/playground', {museumId: id}));
+
   render() {
     return (
-      <div className="museums-map-block">
-        <h1 className="label" style={{width: 240}}>Музеи поблизости</h1>
-        <Map google={this.props.google} zoom={14}/>
+      <div className="museums-map-block" style={{position: 'relative', paddingTop: 30}}>
+        <h1 className="label" style={{position: 'absolute', top: 0, zIndex: 1000, width: 240}}>Музеи поблизости</h1>
+        <MuseumsMap museums={this.props.museums} onMuseumClick={this.openPlayground}></MuseumsMap>
       </div>
     )
   }
 }
 
-let component = GoogleApiWrapper({
-  apiKey: GOOGLE_MAP_API
-})(MuseumsMapBlock);
-
 function mapStateToProps(state) {
-  return {}
+  return {
+    museums: state.data.museums
+  }
 }
 
-export default connect(mapStateToProps)(component);
+export default connect(mapStateToProps)(MuseumsMapBlock);

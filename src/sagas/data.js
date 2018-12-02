@@ -1,10 +1,15 @@
-import { call, all, put } from 'redux-saga/effects'
-import {DB_PATH, ROOMS_PATH, ITEMS_PATH, LOGREG_PATH} from '../env';
+import {call, all, put} from 'redux-saga/effects'
+import {MUSEUMS_PATH, ACHIEVEMENTS_PATH, PLAYGROUNDS_PATH, ITEMS_PATH, LOGREG_PATH} from '../env';
+
+function getData(url) {
+  return fetch(url).then(res => res.json());
+}
 
 export function* fetchMuseums() {
   yield put({type: 'FETCH_START'});
   try {
-    const museums = yield call(fetch(DB_PATH + 'museums.json'));
+    const museums = yield call(getData, MUSEUMS_PATH);
+    console.log(museums);
     yield put({type: 'SET_MUSEUMS', payload: museums});
     yield put({type: 'FETCH_SUCCEED'});
   } catch(e) {
@@ -15,7 +20,7 @@ export function* fetchMuseums() {
 export function* fetchAchievements() {
   yield put({type: 'FETCH_START'});
   try {
-    const achievements = yield call(fetch(DB_PATH + 'achievements.json'));
+    const achievements = yield call(getData, ACHIEVEMENTS_PATH);
     yield put({type: 'SET_ACHIEVEMENTS', payload: achievements});
     yield put({type: 'FETCH_SUCCEED'});
   } catch(e) {
@@ -23,14 +28,13 @@ export function* fetchAchievements() {
   }
 }
 
-
 export function* fetchMuseum(action) {
   yield put({type: 'FETCH_START'});
   try {
     const data = yield all({
-      rooms: call(fetch(ROOMS_PATH + action.id + '.json')),
-      items: call(fetch(ITEMS_PATH + action.id + '.json')),
-      logreg: call(fetch(LOGREG_PATH + action.id + '.json'))
+      playgrounds: call(getData, PLAYGROUNDS_PATH.replace(':id', action.id)),
+      items: call(getData, ITEMS_PATH.replace(':id', action.id)),
+      logreg: call(getData, LOGREG_PATH.replace(':id', action.id))
     });
     yield put({type: 'SET_MUSEUM', payload: data, id: action.id});
     yield put({type: 'FETCH_SUCCEED'});

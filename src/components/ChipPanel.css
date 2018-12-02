@@ -1,0 +1,14 @@
+.chip-panel {
+  position: absolute;
+  left: 10px;
+  width: 89vw;
+  padding: 10px;
+  z-index: 1000;
+  font-weight: 600;
+  font-size: 13px;
+  color: #333;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.66);
+}

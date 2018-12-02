@@ -1,7 +1,14 @@
 export const DB_PATH = 'https://raw.githubusercontent.com/AZbang/vingo/db/';
-export const LOGREG_PATH = DB_PATH + '/model/';
-export const ROOMS_PATH = DB_PATH + '/rooms/';
-export const ITEMS_PATH = DB_PATH + '/items/';
-export const MUSEUMS_IMAGES = DB_PATH + '/museums/assets/';
-export const ITEMS_IMAGES = DB_PATH + '/items/assets/';
-export const GOOGLE_MAP_API = 'AIzaSyDj3_Dx6fAQCbyZE-kjDVTiUlw8tCw0SLA';
+
+export const MUSEUMS_PATH = DB_PATH + 'museums.json';
+export const ACHIEVEMENTS_PATH = DB_PATH + 'achievements.json';
+
+export const LOGREG_PATH = DB_PATH + ':id/logreg.json';
+export const PLAYGROUNDS_PATH = DB_PATH + ':id/paygrounds.json';
+export const ITEMS_PATH = DB_PATH + ':id/items.json';
+
+export const MUSEUMS_IMAGES = DB_PATH + ':id/preview.jpg';
+export const ITEMS_IMAGES = DB_PATH + ':id/items/';
+export const PLAYGROUNDS_IMAGES = DB_PATH + ':id/paygrounds/';
+
+export const YANDEX_MAP_API = '80ea98cf-f2cc-47d6-9fe3-47fc8f9bf7c0';
