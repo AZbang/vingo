@@ -10,6 +10,7 @@ import Icon28Settings from '@vkontakte/icons/dist/28/settings';
 import {isWebView} from '@vkontakte/vkui/src/lib/webview';
 import '@vkontakte/vkui/dist/vkui.css';
 
+import {fetchMuseums, fetchAchievements} from '../actions'
 import MainView from './MainView';
 import AchievementsView from './AchievementsView';
 import StoriesView from './StoriesView';
@@ -17,6 +18,11 @@ import SettingsView from './SettingsView';
 import PlaygroundView from './PlaygroundView';
 
 class App extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(fetchMuseums());
+    this.props.dispatch(fetchAchievements());
+  }
+
   onStoryChange = (e) =>
     this.props.dispatch(push('/' + e.currentTarget.dataset.story));
 

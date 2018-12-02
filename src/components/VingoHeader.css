@@ -1,7 +1,12 @@
+.vingo-header {
+  margin-top: -45px;
+  height: 65px;
+  overflow: hidden;
+}
 .vingo-header__icon {
   width: 45px;
-  margin: 10px 0 10px 10px;
-  padding-top: 20px;
+  margin: 15px 0 15px 15px;
+  float: left;
 }
 
 .vingo-header__name {
@@ -9,5 +14,6 @@
   font-size: 1.6em;
   line-height: 72px;
   font-weight: 800;
+  margin-left: 10px;
   color: #222;
 }

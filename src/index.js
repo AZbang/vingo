@@ -6,8 +6,15 @@ import { ConnectedRouter } from 'connected-react-router'
 
 import registerServiceWorker from './sw';
 import {store, history} from './store';
+import {saveState} from './storage';
 import App from './containers/App';
 import './assets/theme.css';
+
+store.subscribe(() => {
+  let state = store.getState().data;
+  saveState('completeItems', state.completeItems);
+  saveState('completeAchievements', state.completeAchievements);
+});
 
 ReactDOM.render(
   <Provider store={store}>

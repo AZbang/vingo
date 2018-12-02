@@ -8,11 +8,13 @@ class StoriesBlock extends React.Component {
     let style = {
       flexShrink: 0,
       display: 'flex',
+      width: 80,
+      height: 120,
       flexDirection: 'column'
     }
-    return new Array(amt).fill(0).map((v, i) => (
-      <div key={i} style={{...style, paddingRight: i < amt-1 ? 10 : 20}}>
-        <StoryPreview/>
+    this.props.stories.map((item, i) => (
+      <div key={item.id} style={{...style, paddingRight: i < amt-1 ? 10 : 20}}>
+        <StoryPreview data={item}/>
       </div>
     ));
   }
@@ -20,8 +22,8 @@ class StoriesBlock extends React.Component {
   render() {
     return (
       <HorizontalScroll>
-          <div style={{display: 'flex', paddingBottom: '10px', margin: '20px'}}>
-          {this.getStoriesList(5)}
+        <div style={{display: 'flex', paddingBottom: '10px', margin: '20px'}}>
+          {this.getStoriesList()}
         </div>
       </HorizontalScroll>
     )
@@ -29,7 +31,9 @@ class StoriesBlock extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {}
+  return {
+    stories: state.data.stories
+  }
 }
 
 export default connect(mapStateToProps)(StoriesBlock);

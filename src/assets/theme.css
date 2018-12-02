@@ -3,14 +3,6 @@
   --header_background: #fff;
 }
 
-.PanelHeader {
-  border-bottom: 15px solid #fff;
-}
-
-.PanelHeader-left-in--brand {
-  background: transparent;
-}
-
 .label {
   font-family: 'HelveticaNeueCyr';
   text-transform: uppercase;

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 
-import loading from './loading'
+import fetch from './fetch'
 import data from './data'
 
 export default (history) => combineReducers({
   router: connectRouter(history),
-  loading, data
+  fetch, data
 });
