@@ -11,3 +11,9 @@ export function getPlaygroundImage(id, name) {
 export function getMuseumImage(id) {
   return MUSEUMS_IMAGES.replace(':id', id);
 }
+
+export function getMuseum(state, id) {
+  for(let i = 0; i < state.data.museums.length; i++) {
+    if(state.data.museums[i].id === id) return state.data.museums[i];
+  }
+}

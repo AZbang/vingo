@@ -1,14 +1,14 @@
 .chip-panel {
-  position: absolute;
-  left: 10px;
-  width: 89vw;
-  padding: 10px;
-  z-index: 1000;
-  font-weight: 600;
-  font-size: 13px;
-  color: #333;
+  position: fixed;
+  box-sizing: border-box;
+  width: 100%;
+}
+.chip-panel__block {
   border-radius: 5px;
   text-transform: uppercase;
   text-align: center;
-  background: rgba(255, 255, 255, 0.66);
+  line-height: 1.5em;
+  padding: 10px;
+  color: #222;
+  background: rgba(255, 255, 255, 0.8);
 }

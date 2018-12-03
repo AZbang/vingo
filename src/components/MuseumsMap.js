@@ -7,10 +7,9 @@ export class MuseumsMap extends React.Component {
   getMarkers = () => {
     return this.props.museums.map((museum) => {
       let markerStyle = {
-        borderRadius: 8,
+        borderRadius: 12,
         boxSizing: 'border-box',
-        // boxShadow: '0 3px 4px 0px rgba(0, 0, 0, .4)',
-        border: '3px solid #333',
+        border: '5px solid #333',
         overflow: 'hidden',
         width: 84,
         height: 84

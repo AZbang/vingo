@@ -64,7 +64,7 @@ class Camera extends React.Component {
   }
 
   render = () => (
-    <div style={{position: 'absolute', top: 0}}>
+    <div style={{position: 'fixed', top: 0}}>
       <video autoPlay ref={node => this.videoStream = node}></video>
     </div>
   )

@@ -22,6 +22,12 @@ class App extends React.Component {
     this.props.dispatch(fetchAchievements());
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(this.props.tabbarShow !== nextProps.tabbarShow) {
+      document.querySelector('.Tabbar').style.display =  nextProps.tabbarShow ? 'block' : 'none';
+    }
+  }
+
   onStoryChange = (e) =>
     this.props.dispatch(push('/' + e.currentTarget.dataset.story));
 
@@ -66,7 +72,9 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {}
+  return {
+    tabbarShow: state.ui.tabbarShow
+  }
 }
 
 export default connect(mapStateToProps)(App);
