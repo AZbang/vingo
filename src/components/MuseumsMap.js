@@ -1,24 +1,16 @@
 import React from 'react';
 import { Map, Marker, MarkerLayout } from 'yandex-map-react';
-import { getMuseumImage } from '../getters';
 import { YANDEX_MAP_API } from '../env';
+import AchievementItem from './AchievementItem';
+import icon from '../assets/classical-building-ios.png';
 
 export class MuseumsMap extends React.Component {
   getMarkers = () => {
     return this.props.museums.map((museum) => {
-      let markerStyle = {
-        borderRadius: 12,
-        boxSizing: 'border-box',
-        border: '5px solid #333',
-        overflow: 'hidden',
-        width: 84,
-        height: 84
-      }
-
       return (
         <Marker key={museum.id} lat={55.75} lon={37.57} onClick={() => this.props.onMuseumClick(museum.id)}>
           <MarkerLayout>
-            <img src={getMuseumImage(museum.id)} style={markerStyle} alt="marker_icon"/>
+            <AchievementItem data={{icon: (<img alt='icon' width='40px' style={{marginTop: 15}} src={icon}/>)}}></AchievementItem>
           </MarkerLayout>
         </Marker>
       )

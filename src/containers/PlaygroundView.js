@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {push} from 'connected-react-router';
 import {View, Panel} from '@vkontakte/vkui';
 import {fetchMuseum, toogleTabbar} from '../actions';
 import {getMuseum} from '../getters';

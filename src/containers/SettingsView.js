@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {View, Panel} from '@vkontakte/vkui';
+import {View, Panel, Switch} from '@vkontakte/vkui';
 import VingoHeader from '../components/VingoHeader';
 
 class SettingsView extends React.Component {
@@ -9,6 +9,18 @@ class SettingsView extends React.Component {
       <Panel id={this.props.id}>
         <VingoHeader></VingoHeader>
         <h1 className="label" style={{marginTop: 20}}>Настройки</h1>
+        <div>
+          <h1 className="label" style={{marginTop: 40}}>УВЕДОМЛЕНИЯ</h1>
+          <Switch defaultChecked style={{marginLeft: 0, float: 'right', marginTop: -50, marginRight: 10}}/>
+        </div>
+        <div>
+          <h1 className="label" style={{marginTop: 10}}>ВИБРАЦИЯ</h1>
+          <Switch defaultChecked style={{marginLeft: 0, float: 'right', marginTop: -50, marginRight: 10}}/>
+        </div>
+        <div>
+          <h1 className="label" style={{marginTop: 10}}>ЗВУК</h1>
+          <Switch defaultChecked style={{marginLeft: 0, float: 'right', marginTop: -50, marginRight: 10}}/>
+        </div>
       </Panel>
     </View>
   )

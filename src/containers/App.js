@@ -24,7 +24,7 @@ class App extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if(this.props.tabbarShow !== nextProps.tabbarShow) {
-      document.querySelector('.Tabbar').style.display =  nextProps.tabbarShow ? 'block' : 'none';
+      document.querySelector('.Tabbar').style.opacity = nextProps.tabbarShow ? 1 : 0;
     }
   }
 
