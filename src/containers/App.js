@@ -9,7 +9,7 @@ import Icon28Story from '@vkontakte/icons/dist/28/story';
 import Icon28Settings from '@vkontakte/icons/dist/28/settings';
 import '@vkontakte/vkui/dist/vkui.css';
 
-import {fetchMuseums, fetchAchievements} from '../actions'
+import {fetchMuseums, fetchAchievements, fetchStories} from '../actions'
 import MainView from './MainView';
 import AchievementsView from './AchievementsView';
 import StoriesView from './StoriesView';
@@ -20,6 +20,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchMuseums());
     this.props.dispatch(fetchAchievements());
+    this.props.dispatch(fetchStories());
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,13 +47,13 @@ class App extends React.Component {
              onClick={this.onStoryChange}
              selected={activeRoute === 'achievements'}
              data-story="achievements"
-             label="2"
+             label={this.props.achievements}
           ><Icon24FavoriteOutline/></TabbarItem>
           <TabbarItem
              onClick={this.onStoryChange}
              selected={activeRoute === 'stories'}
              data-story="stories"
-             label="31"
+             label={this.props.stories}
           ><Icon28Story/></TabbarItem>
           <TabbarItem
              onClick={this.onStoryChange}
@@ -73,7 +74,9 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    tabbarShow: state.ui.tabbarShow
+    tabbarShow: state.ui.tabbarShow,
+    achievements: state.data.achievements.length,
+    stories:  state.data.stories.length
   }
 }
 

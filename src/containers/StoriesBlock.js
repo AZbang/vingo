@@ -13,7 +13,7 @@ class StoriesBlock extends React.Component {
       flexDirection: 'column'
     }
     return this.props.stories.map((item, i) => (
-      <div key={item.id} style={{...style, paddingRight: i < this.props.stories.length-1 ? 10 : 20}}>
+      <div key={i} style={{...style, paddingRight: i < this.props.stories.length-1 ? 10 : 20}}>
         <StoryPreview data={item}/>
       </div>
     ));

@@ -1,5 +1,5 @@
 import {call, all, put} from 'redux-saga/effects'
-import {MUSEUMS_PATH, ACHIEVEMENTS_PATH, PLAYGROUNDS_PATH, ITEMS_PATH, LOGREG_PATH} from '../env';
+import {MUSEUMS_PATH, STORIES_PATH, ACHIEVEMENTS_PATH, PLAYGROUNDS_PATH, ITEMS_PATH, LOGREG_PATH} from '../env';
 
 function getData(url) {
   return fetch(url).then(res => res.json());
@@ -9,8 +9,18 @@ export function* fetchMuseums() {
   yield put({type: 'FETCH_START'});
   try {
     const museums = yield call(getData, MUSEUMS_PATH);
-    console.log(museums);
     yield put({type: 'SET_MUSEUMS', payload: museums});
+    yield put({type: 'FETCH_SUCCEED'});
+  } catch(e) {
+    yield put({type: 'FETCH_ERROR', error: e});
+  }
+}
+
+export function* fetchStories() {
+  yield put({type: 'FETCH_START'});
+  try {
+    const stories = yield call(getData, STORIES_PATH);
+    yield put({type: 'SET_STORIES', payload: stories});
     yield put({type: 'FETCH_SUCCEED'});
   } catch(e) {
     yield put({type: 'FETCH_ERROR', error: e});

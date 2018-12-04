@@ -2,6 +2,10 @@ export function fetchMuseums() {
   return {type: 'FETCH_MUSEUMS'}
 }
 
+export function fetchStories() {
+  return {type: 'FETCH_STORIES'}
+}
+
 export function fetchAchievements() {
   return {type: 'FETCH_ACHIEVEMENTS'}
 }

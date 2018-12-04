@@ -10,7 +10,7 @@ export class MuseumsMapBlock extends React.Component {
   render() {
     return (
       <div className="museums-map-block" style={{position: 'relative', paddingTop: 30}}>
-        <h1 className="label" style={{position: 'absolute', top: 0, zIndex: 1000, width: 240}}>Музеи поблизости</h1>
+        <h1 className="label" style={{position: 'absolute', top: -15, zIndex: 1000, width: 240}}>Музеи поблизости</h1>
         <MuseumsMap museums={this.props.museums} onMuseumClick={this.openPlayground}></MuseumsMap>
       </div>
     )

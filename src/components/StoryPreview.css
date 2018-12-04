@@ -3,5 +3,7 @@
   height: 100%;
   border-radius: 6px;
   background-color: #ccc;
+  background-size: cover;
+  background-position: center;
   box-shadow: 0px 2px 3px 0px #ccc;
 }
