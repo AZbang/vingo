@@ -3,7 +3,21 @@
     "id": "hermetage_general_building",
   	"name": "Главный Штаб Эрмитажа",
   	"locked": false,
-    "lat": -25.363,
-    "lng": 131.044
+    "lat": 59.9397392,
+    "lng": 30.3140793
+  },
+  {
+    "id": "erarta",
+    "name": "Эрарта",
+    "locked": true,
+    "lat": 59.9322357,
+    "lng": 30.2511635
+  },
+  {
+    "id": "didi",
+    "name": "Художественная галерея DiDi",
+    "locked": true,
+    "lat": 59.933398,
+    "lng": 30.264950
   }
 ]
