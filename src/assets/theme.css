@@ -3,6 +3,10 @@
   --header_background: #fff;
 }
 
+.View {
+  padding-top: 10px;
+}
+
 .label {
   font-family: 'HelveticaNeueCyr';
   text-transform: uppercase;

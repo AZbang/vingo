@@ -17,3 +17,7 @@ export function fetchMuseum(id) {
 export function toogleTabbar(toggle) {
   return {type: toggle ? 'SHOW_TABBAR' : 'HIDE_TABBAR'}
 }
+
+export function predictItem(img) {
+  return {type: 'PREDICT_ITEM', image: img};
+}

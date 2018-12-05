@@ -28,7 +28,7 @@ class PlaygroundView extends React.Component {
         <ChipPanel position="top" size={12}>
           <span style={{fontSize: 13, fontWeight: 600}}>Отсканируйте картину, чтобы начать игру</span>
         </ChipPanel>
-        <ChipPanel position="bottom" size={12} style={{textAlign: 'left', padding: '30px 15px'}}>
+        <ChipPanel position="bottom" size={12} style={{textAlign: 'left', padding: '24px 15px 15px'}}>
           <span style={{fontSize: '2em', fontWeight: 800}}>{this.props.museum.name}</span>
         </ChipPanel>
       </Panel>

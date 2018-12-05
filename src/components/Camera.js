@@ -33,30 +33,23 @@ class Camera extends React.Component {
   }
 
   componentDidMount() {
-    const navigatorAny = navigator;
-    navigator.getUserMedia = navigator.getUserMedia ||
-        navigatorAny.webkitGetUserMedia || navigatorAny.mozGetUserMedia ||
-        navigatorAny.msGetUserMedia;
+    navigator.mediaDevices.getUserMedia({video: { facingMode:  "environment" }}, stream => {
+      this.cameraStream = stream.getTracks()[0];
 
-    if(navigator.getUserMedia) {
-      navigator.getUserMedia({video: { facingMode:  "environment" }}, stream => {
-        this.cameraStream = stream.getTracks()[0];
+      this.videoStream.srcObject = stream;
+      this.videoStream.width = 224;
+      this.videoStream.height = 224;
 
-        this.videoStream.srcObject = stream;
-        this.videoStream.width = 224;
-        this.videoStream.height = 224;
+      this.videoStream.onloadedmetadata = () => {
+        this.videoStream.style.width = this.videoStream.videoWidth+this.videoStream.videoHeight + 'px';
+        this.videoStream.style.marginLeft = -(this.videoStream.videoWidth+this.videoStream.videoHeight)/2+window.innerWidth/2 + 'px';
+        this.videoStream.style.height = '100vh';
 
-        this.videoStream.onloadedmetadata = () => {
-          this.videoStream.style.width = this.videoStream.videoWidth+this.videoStream.videoHeight + 'px';
-          this.videoStream.style.marginLeft = -(this.videoStream.videoWidth+this.videoStream.videoHeight)/2+window.innerWidth/2 + 'px';
-          this.videoStream.style.height = '100vh';
-
-          this.tickerId = setInterval(() => this.capture(), 500);
-        }
-      }, error => {
-        throw error;
-      });
-    }
+        this.tickerId = setInterval(() => this.capture(), 500);
+      }
+    }, error => {
+      throw error;
+    });
   }
   componentWillUnmount() {
     this.tickerId && clearInterval(this.tickerId);

@@ -9,6 +9,6 @@
   text-align: center;
   line-height: 1.5em;
   padding: 10px;
-  color: #222;
-  background: rgba(255, 255, 255, 0.8);
+  color: #fff;
+  background: linear-gradient(to right, #b24592, #f15f79);
 }

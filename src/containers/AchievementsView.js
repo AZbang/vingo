@@ -19,7 +19,7 @@ class AchievementsView extends React.Component {
       <Panel id={this.props.id}>
         <VingoHeader></VingoHeader>
         <h1 className="label">Ваши достижения</h1>
-        <Grid fluid style={{background: '#3ca0dd', paddingTop: 20}}>
+        <Grid fluid style={{background: 'linear-gradient(to right, #457fca, #5691c8)', paddingTop: 20}}>
           <Row>
             {this.getAchievementsList()}
           </Row>
