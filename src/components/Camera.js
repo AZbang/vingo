@@ -33,7 +33,7 @@ class Camera extends React.Component {
   }
 
   componentDidMount() {
-    navigator.mediaDevices.getUserMedia({video: { facingMode:  "environment" }}, stream => {
+    navigator.getUserMedia({video: { facingMode:  "environment" }}, stream => {
       this.cameraStream = stream.getTracks()[0];
 
       this.videoStream.srcObject = stream;

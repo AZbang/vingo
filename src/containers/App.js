@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {push} from 'connected-react-router'
 
-import {Epic, Tabbar, TabbarItem} from '@vkontakte/vkui';
+import {Root, Epic, Tabbar, TabbarItem} from '@vkontakte/vkui';
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import Icon24FavoriteOutline from '@vkontakte/icons/dist/24/favorite_outline';
 import Icon28Story from '@vkontakte/icons/dist/28/story';
@@ -15,6 +15,7 @@ import AchievementsView from './AchievementsView';
 import StoriesView from './StoriesView';
 import SettingsView from './SettingsView';
 import PlaygroundView from './PlaygroundView';
+import StoryView from './StoryView';
 
 class App extends React.Component {
   componentDidMount() {
@@ -25,7 +26,7 @@ class App extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if(this.props.tabbarShow !== nextProps.tabbarShow) {
-      document.querySelector('.Tabbar').style.opacity = nextProps.tabbarShow ? 1 : 0;
+      document.querySelector('.Tabbar').style.display = nextProps.tabbarShow ? 'flex' : 'none';
     }
   }
 
@@ -36,7 +37,7 @@ class App extends React.Component {
     let activeRoute = this.props.pageId || 'main';
 
     return (
-      <Epic activeStory={activeRoute} tabbar={
+      <Epic activeStory="views" tabbar={
         <Tabbar>
           <TabbarItem
              onClick={this.onStoryChange}
@@ -62,11 +63,14 @@ class App extends React.Component {
           ><Icon28Settings/></TabbarItem>
         </Tabbar>
       }>
-        <MainView id="main"/>
-        <AchievementsView id="achievements"/>
-        <StoriesView id="stories"/>
-        <SettingsView id="settings"/>
-        <PlaygroundView id="playground"/>
+        <Root id="views" activeView={activeRoute}>
+          <MainView id="main"/>
+          <AchievementsView id="achievements"/>
+          <StoriesView id="stories"/>
+          <SettingsView id="settings"/>
+          <PlaygroundView id="playground"/>
+          <StoryView id="story"/>
+        </Root>
       </Epic>
     )
   }

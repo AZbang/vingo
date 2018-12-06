@@ -1,17 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {push} from 'connected-react-router';
 import {View, Panel} from '@vkontakte/vkui';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import VingoHeader from '../components/VingoHeader';
-import StoryPreview from '../components/StoryPreview';
+import StoryCard from '../components/StoryCard';
 
 class StoriesView extends React.Component {
   getStoriesList = () => {
     return this.props.completeItems.map((item, i) => (
       <Col key={i} xs={4} style={{height: 160, marginBottom: 20}}>
-        <StoryPreview data={item}/>
+        <StoryCard data={item} onClick={() => this.openStory(item.id)}/>
       </Col>
     ));
+  }
+
+  openStory = (id) => {
+    this.props.dispatch(push('/story', {itemId: id}));
   }
 
   render = () => (

@@ -37,10 +37,10 @@ class PlaygroundView extends React.Component {
 }
 
 function mapStateToProps(state) {
-  let id = state.router.location.state.museumId;
+  const museumId = state.router.location.state ? state.router.location.state.museumId : null;
   return {
-    museumId: id,
-    museum: getMuseum(state, id) || {},
+    museumId,
+    museum: getMuseum(state, museumId) || {},
     predictItem: state.data.predictItem
   }
 }

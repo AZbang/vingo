@@ -19,7 +19,10 @@ export function* fetchMuseums() {
 export function* fetchStories() {
   yield put({type: 'FETCH_START'});
   try {
-    const stories = yield call(getData, STORIES_PATH);
+    // mocking stories
+    const stories = yield call(getData, ITEMS_PATH.replace(':id', 'hermetage_general_building'));
+    stories.sort(() => Math.random() - .5).length = Math.floor(Math.random()*5)+3;
+
     yield put({type: 'SET_STORIES', payload: stories});
     yield put({type: 'FETCH_SUCCEED'});
   } catch(e) {
