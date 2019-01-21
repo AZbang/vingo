@@ -1,35 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { Route } from 'react-router';
-import { ConnectedRouter } from 'connected-react-router'
+import { Provider } from 'mobx-react';
+import { Router, Route } from 'react-router';
+import { syncHistoryWithStore } from 'mobx-react-router';
+import createBrowserHistory from 'history/createBrowserHistory';
 
 import registerServiceWorker from './sw';
-import {store, history} from './store';
-import {saveState} from './storage';
-import App from './containers/App';
+import stores from './stores';
+
+import App from './App';
 import './assets/theme.css';
 import './assets/fonts.css';
 
-store.subscribe(() => {
-  let state = store.getState().data;
-  saveState('completeItems', state.completeItems);
-  saveState('completeAchievements', state.completeAchievements);
-});
+const history = syncHistoryWithStore(createBrowserHistory(), stores.routing);
+registerServiceWorker();
+
+window.STORE = stores;
 
 const render = () => {
   ReactDOM.render(
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
+    <Provider {...stores}>
+      <Router history={history}>
         <div>
-          <Route path='/:pageId?' component={(props) => <App pageId={props.match.params.pageId}/>}/>
+          <Route
+            path='/:pageId?'
+            component={(props) =>
+              <App pageId={props.match.params.pageId}/>
+            }
+          />
         </div>
-      </ConnectedRouter>
+      </Router>
     </Provider>,
     document.getElementById('root')
   )
 }
 
-registerServiceWorker();
-document.addEventListener("deviceready", render, false);
+document.addEventListener('deviceready', render, false);
 !window.cordova && render();

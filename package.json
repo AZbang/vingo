@@ -2,49 +2,60 @@
   "name": "vingo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
-    "@tensorflow/tfjs": "^0.14.0",
-    "@vkontakte/icons": "^1.2.1",
-    "@vkontakte/vkui": "^2.13.0",
-    "connected-react-router": "^5.0.1",
+    "@vkontakte/icons": "^1.2.5",
+    "@vkontakte/vkui": "^2.16.7",
+    "axios": "^0.18.0",
     "cordova-android": "^7.1.1",
+    "cordova-browser": "^5.0.4",
+    "cordova-plugin-whitelist": "1",
     "core-js": "^2.5.7",
-    "history": "^4.7.2",
-    "imdb-api": "^4.0.2",
-    "moviedb-promise": "^1.3.1",
+    "emoji-mart": "^2.9.2",
+    "es6-promise-plugin": "^4.2.2",
+    "mobx": "^5.8.0",
+    "mobx-react": "^5.4.3",
+    "mobx-react-router": "^4.0.5",
+    "onnxjs": "^0.1.1",
+    "phonegap-plugin-media-stream": "git+https://github.com/phonegap/phonegap-plugin-media-stream.git",
+    "plugin": "^0.3.3",
     "prop-types": "^15.6.2",
     "react": "^16.6.1",
-    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.6.1",
+    "react-emoji-render": "^0.5.0",
     "react-flexbox-grid": "^2.1.2",
-    "react-redux": "^5.0.7",
+    "react-motion": "^0.5.2",
     "react-router": "^4.3.1",
-    "redux": "^4.0.1",
-    "redux-saga": "^0.16.2",
-    "seamless-immutable": "^7.1.3",
-    "yandex-map-react": "^1.1.1"
+    "react-router-dom": "^4.3.1",
+    "react-textfit": "^1.1.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.2.3",
     "cross-env": "^5.2.0",
+    "customize-cra": "^0.2.8",
     "gh-pages": "^2.0.1",
+    "node-sass": "^4.11.0",
+    "react-app-rewired": "^1.6.2",
     "react-hot-loader": "^4.3.12",
     "react-scripts": "2.0.3"
   },
   "scripts": {
-    "start": "SET PORT=10888 && react-scripts start",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "cordova:build": "react-scripts build && rm -rf www && mv build www && rm -rf build",
+    "start": "SET PORT=10888 && react-app-rewired start",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject",
+    "cordova:build": "react-app-rewired build && rm -rf www && mv build www && rm -rf build",
     "cordova:android": "npm run cordova:build && cordova build android --release --buildConfig",
     "deploy": "gh-pages -d build",
-    "build": "react-scripts build"
+    "build": "react-app-rewired build"
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "phonegap-plugin-media-stream": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   },
   "browserslist": [

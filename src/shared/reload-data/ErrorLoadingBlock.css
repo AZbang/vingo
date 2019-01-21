@@ -1,0 +1,22 @@
+.error-loading-block {
+  text-align: center;
+  padding: 0 30px;
+  margin-top: 70px;
+}
+
+.error-loading-block__icon {
+  font-size: 4em;
+}
+
+.error-loading-block__text {
+  color: #ccc;
+  font-family: HelveticaNeueCyr;
+  font-weight: 400;
+}
+
+.error-loading-block__button {
+  color: #489bff;
+  cursor: pointer;
+  font-weight: 200;
+  margin-left: 10px;
+}
