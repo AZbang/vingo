@@ -9,6 +9,7 @@ import {Emoji} from 'emoji-mart'
 class Playground extends React.Component {
   state = {
     snapshot: null,
+    isGame: false
   }
 
   componentDidMount() {
@@ -21,7 +22,8 @@ class Playground extends React.Component {
   onSnapshot = (img) => {
     this.setState({
       snapshot: img.src
-    })
+    });
+
     // this.props.model.predict(img);
   }
 
@@ -39,14 +41,14 @@ class Playground extends React.Component {
   }
 
   render() {
-    const { media } = this.props;
-
+    const { media, app } = this.props;
+    const { isGame, snapshot } = this.state;
     return (
       <div className='Playground'>
         {this.cameraController()}
 
         <ChipCard top show textFit type="mini">
-          Zoom the camera onto the flower to scan it
+          Наведите камеру на картину, чтобы начать игру
         </ChipCard>
 
         <ChipCard top show={media.error} type="block"
@@ -55,17 +57,17 @@ class Playground extends React.Component {
           subtitle="Your device not support webrtc camera :("
         />
 
-        <ChipCard top show={this.state.snapshot} type="block"
-          avatar={<img src={this.state.snapshot} />}
+        <ChipCard top show={snapshot && app.debug} type="block"
+          avatar={<img src={snapshot} />}
           title="Searching..."
           subtitle="Trying to find a match with the picture."
         />
 
 
-        <ChipCard bottom={true} show type="block"
+        <ChipCard bottom={true} show={!isGame} type="block"
           header="Главный штаб эрмитажа"
         />
-        <ChipCard bottom show type="block" style={{textAlign: 'center'}}>
+        <ChipCard bottom show={isGame} type="block" style={{textAlign: 'center'}}>
           <Emoji emoji=":girl::skin-tone-2:" size={24} />
           <Emoji emoji=":girl::skin-tone-2:" size={24} />
           <Emoji emoji=":girl::skin-tone-2:" size={24} />

@@ -10,7 +10,7 @@ class CollectionsView extends React.Component {
     return (
       <View id={this.props.id} activePanel={this.props.id}>
         <Panel id={this.props.id}>
-          <EmptySection icon={icon} text="Здесь будут ваши достижения!"/>
+          <EmptySection icon={icon} text="Посетите музей, чтобы собрать Вашу первую коллекцию!"/>
         </Panel>
       </View>
     )

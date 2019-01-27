@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Icon28Search from '@vkontakte/icons/dist/28/search';
 import './Camera.css';
 
 class Camera extends React.PureComponent {
@@ -59,6 +60,7 @@ class Camera extends React.PureComponent {
           autoPlay
           muted
         />
+      <Icon28Search className="icon"/>
       </div>
     );
   }

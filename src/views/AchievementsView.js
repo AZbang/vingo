@@ -10,7 +10,7 @@ class AchievementsView extends React.Component {
     return (
       <View id={this.props.id} activePanel={this.props.id}>
         <Panel id={this.props.id}>
-          <EmptySection icon={icon} text="Здесь будут ваши достижения!"/>
+          <EmptySection icon={icon} text="Исследуйте музеи, чтобы получать достижения!"/>
         </Panel>
       </View>
     )
