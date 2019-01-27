@@ -1,7 +1,7 @@
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
 import * as api from '../services/api';
 
-class StoriesStore {
+class MuseumsStore {
   @observable data = [];
   @observable error = null;
   @observable loading = false;
@@ -11,15 +11,22 @@ class StoriesStore {
     this.loading = true;
     this.data = [];
 
-    api.getStories()
+    api.getMuseums()
       .then(action(({data}) => this.data = data))
       .catch(action((err) => this.error = err))
       .finally(action(() => this.loading = false));
   }
 
+  @computed
   get count() {
     return this.data.length || null;
   }
+
+  getMuseum(id) {
+    for(let i = 0; i < this.data.length; i++) {
+      if(this.data[i].id === id) return this.data[i];
+    }
+  }
 }
 
-export default new StoriesStore();
+export default new MuseumsStore();

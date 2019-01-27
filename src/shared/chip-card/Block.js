@@ -5,6 +5,7 @@ class Block extends React.PureComponent {
   render() {
     return (
       <div
+        onClick={this.props.onClick}
         className={styles.block}
         style={this.props.style}>
         <div className={styles.preview}>

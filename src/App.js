@@ -13,7 +13,7 @@ import AchievementsView from './views/MainView';
 import StoriesView from './views/MainView';
 import SettingsView from './views/SettingsView';
 import PlaygroundView from './views/PlaygroundView';
-import StoryView from './views/MainView';
+import StoryView from './views/StoryView';
 
 @inject('app', 'routing', 'media', 'stories') @observer
 class App extends React.Component {

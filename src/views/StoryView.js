@@ -1,34 +1,35 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {View, Panel} from '@vkontakte/vkui';
+import {inject, observer} from 'mobx-react';
+import {StoryDesk} from '../components';
 
-import {getItem} from '../getters';
-import {toogleTabbar} from '../actions';
-import StoryCard from '../components/StoryCard';
-
+@inject('routing', 'app') @observer
 class StoryView extends React.Component {
+  item = this.props.routing.history.location.state.item
+
   componentDidMount() {
-    this.props.dispatch(toogleTabbar(false));
+    this.props.app.toggleTabbar(false);
   }
 
   componentWillUnmount() {
-    this.props.dispatch(toogleTabbar(true));
+    this.props.app.toggleTabbar(true);
   }
 
-  render = () => (
-    <View id={this.props.id} activePanel={this.props.id}>
-      <Panel id={this.props.id}>
-        <div style={{position: 'fixed', top: 0, width: '100vw', height: '100vh'}}>
-          <StoryCard data={this.props.item}></StoryCard>
-        </div>
-      </Panel>
-    </View>
-  )
-}
+  goToBack = () => {
+    this.props.routing.push('/main');
+  }
 
-function mapStateToProps(state) {
-  return {
-    item: getItem(state, state.router.location.state ? state.router.location.state.itemId : null) || {}
+  render() {
+    return (
+      <View id={this.props.id} activePanel={this.props.id}>
+        <Panel id={this.props.id}>
+          <StoryDesk
+            onComplete={this.goToBack}
+            data={this.item}/>
+        </Panel>
+      </View>
+    )
   }
 }
-export default connect(mapStateToProps)(StoryView);
+
+export default StoryView;

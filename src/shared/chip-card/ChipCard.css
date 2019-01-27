@@ -1,9 +1,10 @@
 #chip-cards-top, #chip-cards-bottom {
   width: 100vw;
-  position: absolute;
+  position: fixed;
   padding: 10px;
   box-sizing: border-box;
   left: 0;
+  z-index: 10000;
 }
 #chip-cards-top {
   top: 0;

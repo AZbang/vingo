@@ -1,0 +1,32 @@
+.card
+  position: absolute
+  background-position: center
+  background-size: cover
+  width: 100%
+  height: 100%
+
+  &:before
+    content: ''
+    position: absolute
+    width: 100%
+    height: 260px
+    top: 0
+    background: linear-gradient(0deg, rgba(34, 101, 163, 0), rgba(0, 0, 0, .7))
+
+  &:after
+    content: ''
+    position: absolute
+    width: 100%
+    height: 260px
+    bottom: 0
+    background: linear-gradient(0deg, rgba(0, 0, 0, .7), rgba(34, 101, 163, 0))
+
+.story
+  padding: 20px
+  font-size: 1.2em
+  position: absolute
+  bottom: 0
+  color: #fff
+  font-family: HelveticaNeueCyr
+  font-weight: 800
+  z-index: 100

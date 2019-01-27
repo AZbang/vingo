@@ -36,20 +36,11 @@ class Playground extends React.Component {
         snapshotSize={224}
       />
     }
-
-    if(media.error) {
-      return (
-        <ChipCard top show type="block"
-          avatar={<Emoji emoji=":girl::skin-tone-2:" size={24} />}
-          title="Oh no..."
-          subtitle="Your device not support webrtc camera :("
-        />
-      )
-    }
   }
 
-
   render() {
+    const { media } = this.props;
+
     return (
       <div className='Playground'>
         {this.cameraController()}
@@ -58,16 +49,19 @@ class Playground extends React.Component {
           Zoom the camera onto the flower to scan it
         </ChipCard>
 
-        <ChipCard top show type="block"
+        <ChipCard top show={media.error} type="block"
+          avatar={<Emoji emoji=":cry:" size={42} />}
+          title="Oh no..."
+          subtitle="Your device not support webrtc camera :("
+        />
+
+        <ChipCard top show={this.state.snapshot} type="block"
           avatar={<img src={this.state.snapshot} />}
           title="Searching..."
           subtitle="Trying to find a match with the picture."
         />
-        <ChipCard top show type="block"
-          avatar={<Emoji emoji=":cry::skin-tone-2:" size={42} />}
-          title="Oh no..."
-          subtitle="Your device not support webrtc camera :("
-        />
+
+
         <ChipCard bottom={true} show type="block"
           header="Главный штаб эрмитажа"
         />

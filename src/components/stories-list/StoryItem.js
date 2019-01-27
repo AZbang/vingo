@@ -1,5 +1,6 @@
 import React from 'react';
 import {Motion, spring, presets} from 'react-motion';
+import {Link} from 'react-router-dom'
 import styles from './StoryItem.module.sass';
 
 class StoryCard extends React.Component {
@@ -11,13 +12,18 @@ class StoryCard extends React.Component {
           opacity: spring(1)
         }}>
         {({opacity}) =>
-          <div className={styles.storyCard}
-               onClick={this.props.onClick}
-               style={{
-                 backgroundImage: 'url(' + this.props.data.image  + ')',
-                 opacity,
-               }}
-          ></div>
+          <Link to={{
+            pathname: '/story',
+            state: { item: {...this.props.data} }
+          }}>
+            <div className={styles.storyCard}
+                 onClick={this.props.onClick}
+                 style={{
+                   backgroundImage: 'url(' + this.props.data.image  + ')',
+                   opacity,
+                 }}
+            ></div>
+          </Link>
         }
       </Motion>
     )
