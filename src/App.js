@@ -12,20 +12,13 @@ import MainView from './views/MainView';
 import AchievementsView from './views/MainView';
 import StoriesView from './views/MainView';
 import SettingsView from './views/SettingsView';
-import PlaygroundView from './views/MainView';
+import PlaygroundView from './views/PlaygroundView';
 import StoryView from './views/MainView';
 
-@inject('app', 'routing', 'stories') @observer
+@inject('app', 'routing', 'media', 'stories') @observer
 class App extends React.Component {
-  componentWillReceiveProps(nextProps) {
-    if(this.props.app.isTabbar !== nextProps.app.isTabbar) {
-      document.querySelector('.Tabbar').style.display = nextProps.app.isTabbar ? 'flex' : 'none';
-    }
-  }
-
   componentDidMount() {
-    this.props.stories.load();
-    this.props.app.loadMuseums();
+    this.props.media.getMediaStream();
   }
 
   onStoryChange = (e) =>

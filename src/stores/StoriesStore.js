@@ -9,12 +9,14 @@ class StoriesStore {
   @action
   load() {
     this.loading = true;
-    api.getStories()
-      .then(action(({data}) => this.stories = data))
-      .catch(action((err) => this.error = err))
-      .finally(action(() => this.loading = false));
-  }
+    this.stories = [];
 
+    api.getStories()
+      .then(action('fetchSuccess', ({data}) => this.stories = data))
+      .catch(action('fetchError', (err) => this.error = err))
+      .finally(action('fetchComplete', () => this.loading = false));
+  }
+  
   get count() {
     return this.stories.length || null;
   }

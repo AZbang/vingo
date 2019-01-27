@@ -9,13 +9,18 @@ class AppStore {
 
   @action toggleTabbar(v = !this.isTabbar) {
     this.isTabbar = v;
+    document.querySelector('.Tabbar').style.display = this.isTabbar ? 'flex' : 'none';
+  }
+
+  @action setMuseums(data = []) {
+    this.museums = data;
   }
 
   @action
   async loadMuseums() {
     this.loadingMuseums = true;
     api.getMuseums()
-      .then(action(({data}) => this.museums = data))
+      .then(({data}) => this.setMuseums(data))
       .catch(action((err) => this.errorMuseums = err))
       .finally(action(() => this.loadingMuseums = false));
   }

@@ -1,13 +1,12 @@
 import React from 'react';
 import {View, Panel, Switch} from '@vkontakte/vkui';
-import {AppHeader} from '../components';
+import {AppHeader} from '../shared';
 
 class SettingsView extends React.Component {
   render = () => (
     <View id={this.props.id} activePanel={this.props.id}>
       <Panel id={this.props.id}>
-        <AppHeader/>
-        <h1 className="label" style={{marginTop: 20}}>Настройки</h1>
+        <AppHeader title="Настройки"/>
         <div>
           <h1 className="label" style={{marginTop: 40}}>УВЕДОМЛЕНИЯ</h1>
           <Switch defaultChecked style={{marginLeft: 0, float: 'right', marginTop: -50, marginRight: 10}}/>

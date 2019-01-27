@@ -1,39 +1,86 @@
 import React from 'react';
-import {View, Panel} from '@vkontakte/vkui';
-import {Camera, ChipPanel} from '../shared';
+import { inject, observer } from 'mobx-react';
 
-@inject('app', 'routing', 'museum') @observer
-class PlaygroundView extends React.Component {
+import { Camera, ChipCard } from '../shared';
+import {Emoji} from 'emoji-mart'
+
+@inject('media', 'app')
+@observer
+class Playground extends React.Component {
+  state = {
+    snapshot: null,
+  }
+
   componentDidMount() {
-    this.props.app.toogleTabbar(false);
-    this.props.app.toggleStream(true);
-    this.props.app.loadMuseum(this.props.museumId);
+    this.props.app.toggleTabbar(false);
   }
 
   componentWillUnmount() {
-    this.props.app.toogleTabbar(true);
-    this.props.app.toogleTabbar(false);
+    this.props.app.toggleTabbar(true);
   }
-
   onSnapshot = (img) => {
-    this.props.model
+    this.setState({
+      snapshot: img.src
+    })
+    // this.props.model.predict(img);
   }
 
-  render = () => (
-    <View id={this.props.id} activePanel={this.props.id}>
-      <Panel id={this.props.id}>
-        <Camera/>
-        <ChipCard
-          top mini
-          fitText="Наведите камеру на картину, чтобы начать игру"
+  cameraController = () => {
+    const { media } = this.props;
+
+    if(media.stream) {
+      return <Camera
+        onSnapshot={this.onSnapshot}
+        stream={media.stream}
+        snapshotInterval={500}
+        snapshotSize={224}
+      />
+    }
+
+    if(media.error) {
+      return (
+        <ChipCard top show type="block"
+          avatar={<Emoji emoji=":girl::skin-tone-2:" size={24} />}
+          title="Oh no..."
+          subtitle="Your device not support webrtc camera :("
         />
-        <ChipCard
-          bottom block downed
-          header="ГЛАВНЫЙ ШТАБ ЭРМИТАЖА"
+      )
+    }
+  }
+
+
+  render() {
+    return (
+      <div className='Playground'>
+        {this.cameraController()}
+
+        <ChipCard top show textFit type="mini">
+          Zoom the camera onto the flower to scan it
+        </ChipCard>
+
+        <ChipCard top show type="block"
+          avatar={<img src={this.state.snapshot} />}
+          title="Searching..."
+          subtitle="Trying to find a match with the picture."
         />
-      </Panel>
-    </View>
-  )
+        <ChipCard top show type="block"
+          avatar={<Emoji emoji=":cry::skin-tone-2:" size={42} />}
+          title="Oh no..."
+          subtitle="Your device not support webrtc camera :("
+        />
+        <ChipCard bottom={true} show type="block"
+          header="Главный штаб эрмитажа"
+        />
+        <ChipCard bottom show type="block" style={{textAlign: 'center'}}>
+          <Emoji emoji=":girl::skin-tone-2:" size={24} />
+          <Emoji emoji=":girl::skin-tone-2:" size={24} />
+          <Emoji emoji=":girl::skin-tone-2:" size={24} />
+          <Emoji emoji=":girl::skin-tone-2:" size={24} />
+          <Emoji emoji=":girl::skin-tone-2:" size={24} />
+        </ChipCard>
+      </div>
+    )
+  }
 }
 
-export default PlaygroundView;
+export default Playground;

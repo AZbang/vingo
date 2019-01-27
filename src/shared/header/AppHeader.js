@@ -7,7 +7,7 @@ class AppHeader extends React.Component {
     return (
       <div className={styles.header}>
         <img alt="logo" src={logo} className={styles.icon}/>
-        <span className={styles.title}>VINGO</span>
+        <span className={styles.title}>{this.props.title}</span>
       </div>
     )
   }

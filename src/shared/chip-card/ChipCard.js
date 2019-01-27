@@ -35,8 +35,8 @@ class ChipCard extends React.PureComponent {
         {({y}) =>
           <div className="chip-card">
             {this.props.type === 'block' ?
-              <Block {...this.props} style={{transform: `translateY(${y}px)`}}></Block> :
-              <Mini {...this.props} style={{transform: `translateY(${y}px)`}}></Mini>
+              <Block {...this.props} style={{...this.props.style, transform: `translateY(${y}px)`}}></Block> :
+              <Mini {...this.props} style={{...this.props.style, transform: `translateY(${y}px)`}}></Mini>
             }
           </div>
         }

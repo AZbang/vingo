@@ -4,6 +4,8 @@ import userStore from './UserStore';
 import modelStore from './ModelStore';
 import museumStore from './MuseumStore';
 import storiesStore from './StoriesStore';
+import mediaStore from './MediaStore';
+
 const routingStore = new RouterStore();
 
 export default {
@@ -12,5 +14,6 @@ export default {
   model: modelStore,
   museum: museumStore,
   stories: storiesStore,
+  media: mediaStore,
   routing: routingStore,
 }
