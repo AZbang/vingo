@@ -2,10 +2,10 @@ import React from 'react';
 import {View, Panel} from '@vkontakte/vkui';
 import {inject, observer} from 'mobx-react';
 import {EmptySection} from '../shared';
-import icon from '../assets/sports-medal.png';
+import icon from '../assets/card-file-box.png';
 
 @inject('routing', 'app') @observer
-class AchievementsView extends React.Component {
+class CollectionsView extends React.Component {
   render() {
     return (
       <View id={this.props.id} activePanel={this.props.id}>
@@ -17,4 +17,4 @@ class AchievementsView extends React.Component {
   }
 }
 
-export default AchievementsView;
+export default CollectionsView;

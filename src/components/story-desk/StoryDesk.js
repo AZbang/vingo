@@ -17,7 +17,7 @@ class StoryDesk extends React.Component {
 
   componentDidMount() {
     this.setState({
-      stories: [this.props.data.title].concat(this.props.data.description.split('. '))
+      stories: [this.props.data.title].concat(this.props.data.description.split('. ')).slice(0, -1)
     });
   }
 

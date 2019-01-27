@@ -9,8 +9,8 @@ import Icon28Settings from '@vkontakte/icons/dist/28/settings';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import MainView from './views/MainView';
-import AchievementsView from './views/MainView';
-import StoriesView from './views/MainView';
+import AchievementsView from './views/AchievementsView';
+import CollectionsView from './views/CollectionsView';
 import SettingsView from './views/SettingsView';
 import PlaygroundView from './views/PlaygroundView';
 import StoryView from './views/StoryView';
@@ -44,7 +44,7 @@ class App extends React.Component {
           <TabbarItem
              onClick={this.onStoryChange}
              selected={activeRoute === 'stories'}
-             data-story="stories"
+             data-story="collections"
              label={this.props.stories.count}
           ><Icon28Story/></TabbarItem>
           <TabbarItem
@@ -57,7 +57,7 @@ class App extends React.Component {
         <Root id="views" activeView={activeRoute}>
           <MainView id="main"/>
           <AchievementsView id="achievements"/>
-          <StoriesView id="stories"/>
+          <CollectionsView id="collections"/>
           <SettingsView id="settings"/>
           <PlaygroundView id="playground"/>
           <StoryView id="story"/>
