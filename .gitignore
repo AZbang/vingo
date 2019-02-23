@@ -13,7 +13,8 @@
 /www
 
 # misc
-public/assets/*.onnx
+/psd
+public/*.onnx
 build.json
 azbang.jks
 .DS_Store

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import { Router, Route } from 'react-router';
 import { syncHistoryWithStore } from 'mobx-react-router';
-import createBrowserHistory from 'history/createBrowserHistory';
+import createHashHistory from 'history/createHashHistory';
 
 import registerServiceWorker from './sw';
 import stores from './stores';
@@ -12,7 +12,7 @@ import App from './App';
 import './assets/theme.css';
 import './assets/fonts.css';
 
-const history = syncHistoryWithStore(createBrowserHistory(), stores.routing);
+const history = syncHistoryWithStore(createHashHistory(), stores.routing);
 registerServiceWorker();
 
 window.STORE = stores;

@@ -18,10 +18,12 @@ import StoryView from './views/StoryView';
 import {ChipCard} from './shared';
 import {Emoji} from 'emoji-mart';
 
-@inject('app', 'routing', 'media', 'stories') @observer
+@inject('stories', 'routing', 'media', 'model') @observer
 class App extends React.Component {
-  componentDidMount() {
+  async componentDidMount() {
     this.props.media.getMediaStream();
+    await this.props.model.loadModel();
+    await this.props.model.predict('./cat.jpg');
   }
 
   onStoryChange = (e) =>
@@ -30,14 +32,29 @@ class App extends React.Component {
   pushController = () => (
     <Fragment>
       <ChipCard top show type="block" swipeable
-        avatar={<Emoji emoji=":girl:" size={42} />}
+        avatar={<Emoji emoji=":fire:" size={42} />}
         title="Привет, друг!"
         subtitle="Это приложение порвет тебе ебальник!"
       />
-      <ChipCard top show type="block" swipeable
-        avatar={<Emoji emoji=":man:" size={42} />}
-        title="Санек пидор"
-        subtitle="Заебал меня уже каждый час спрашивать где билд, я те чо, раб?!"
+      <ChipCard top show={this.props.model.error} type="block" swipeable
+        avatar={<Emoji emoji=":cry:" size={42} />}
+        title="Произошла ошибка"
+        subtitle="Похоже, что Ваше устройство не поддерживает ONNX.js"
+      />
+      <ChipCard top show={this.props.model.loading} type="block" swipeable
+        avatar={<Emoji emoji=":sleeping:" size={42} />}
+        title="Загрузка..."
+        subtitle="Придержите коней, сударь, моделька грузится..."
+      />
+      <ChipCard top show={this.props.model.ready} type="block" swipeable
+        avatar={<img src="cat.jpg" />}
+        title="Модель загружена"
+        subtitle="Йоу, круто, давай попробуем распознать вот ето существо!"
+      />
+      <ChipCard top show={this.props.model.predicted} type="block" swipeable
+        avatar={<Emoji emoji=":cat:" size={42} />}
+        title="Ето кица"
+        subtitle="Наши нейронные сети говорят, что ето кица"
       />
     </Fragment>
   )

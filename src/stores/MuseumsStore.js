@@ -1,4 +1,4 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed, runInAction} from 'mobx';
 import * as api from '../services/api';
 
 class MuseumsStore {
@@ -7,14 +7,16 @@ class MuseumsStore {
   @observable loading = false;
 
   @action
-  load() {
+  async load() {
     this.loading = true;
-    this.data = [];
+    const museums = api.getMuseums();
 
-    api.getMuseums()
-      .then(action(({data}) => this.data = data))
-      .catch(action((err) => this.error = err))
-      .finally(action(() => this.loading = false));
+    for(const museum of museums) {
+      const data = await api.getMuseum(museum.id);
+      runInAction(() => this.data.push({...museum, ...data}));
+    }
+
+    runInAction(() => this.loading = false);
   }
 
   @computed

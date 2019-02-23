@@ -4,7 +4,7 @@ import * as api from '../services/api';
 class AppStore {
   @observable isTabbar = true;
   @observable meeting = true;
-  @observable debug = false;
+  @observable debug = true;
 
 
   @action toggleDebug(v = !this.debug) {

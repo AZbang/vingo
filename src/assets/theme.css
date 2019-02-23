@@ -1,28 +1,9 @@
 :root {
-  --background_page: #fff;
-  --header_background: #fff;
-}
-
-.View {
-  padding-top: 10px;
-}
-
-.label {
-  font-family: 'HelveticaNeueCyr';
-  text-transform: uppercase;
-  font-size: 1.4em;
-  font-weight: 800;
-  margin-top: 20px;
-  margin-left: 15px;
-  line-height: 19px;
-  color: #222;
-}
-
-a {
-  text-decoration: none;
-  color: rgb(19, 35, 54)
-}
-
-a:visited {
-  color: rgb(19, 35, 54)
+  --main-color: #20263c;
+  --accent-color: #ff4488;
+  --white-color: #fff;
+  --text-color: #333333;
+  --second-text-color: #717171;
+  --text-font: 'HelveticaNeueCyr';
+  --background_page: var(--main-color);
 }
