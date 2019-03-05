@@ -29,7 +29,7 @@ class ImageLoader {
     });
 
     img.onload = () => {
-      if (img.type === 'error') throw `Could not load image: ${url}`;
+      if (img.type === 'error') throw Error(`Could not load image: ${url}`);
       else {
         this.ctx.drawImage(img, 0, 0)
         window.setTimeout(() => { cb(); }, 0);

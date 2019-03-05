@@ -58,7 +58,7 @@ class Playground extends React.Component {
         />
 
         <ChipCard top show={snapshot && app.debug} type="block"
-          avatar={<img src={snapshot} />}
+          avatar={<img src={snapshot} alt="snapshot"/>}
           title="Searching..."
           subtitle="Trying to find a match with the picture."
         />

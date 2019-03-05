@@ -6,4 +6,11 @@
   --second-text-color: #717171;
   --text-font: 'HelveticaNeueCyr';
   --background_page: var(--main-color);
+  --header_alternate_background: var(--main-color);
+  --tabbar_inactive_icon: var(--white-color);
+  --tabbar_active_icon: var(--accent-color);
+}
+
+.Tabbar {
+  border-radius: 50px 50px 0 0;
 }

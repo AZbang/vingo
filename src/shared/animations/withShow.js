@@ -1,5 +1,5 @@
 import React from 'react';
-import {Motion, spring, presets} from 'react-motion';
+import {Motion, spring} from 'react-motion';
 
 function withShow(comp, anim) {
   const animation = anim ? {y: -300, opacity: -20} : {y: 0, opacity: 1};

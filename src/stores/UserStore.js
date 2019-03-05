@@ -1,5 +1,4 @@
 import { observable, action } from 'mobx';
-import * as api from '../services/api';
 import storage from '../services/storage';
 
 class UserStore {

@@ -1,9 +1,8 @@
 import React from 'react';
-import {Div, Button} from '@vkontakte/vkui';
+import {Div} from '@vkontakte/vkui';
 import {Link} from 'react-router-dom'
 import {withShow} from '../../shared'
 import styles from './MuseumItem.module.sass';
-import icon from '../../assets/classical-building-ios.png';
 
 class MuseumItem extends React.Component {
   render() {

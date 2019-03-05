@@ -23,7 +23,7 @@ class StoryDesk extends React.Component {
 
   nextStory = () => {
     if(this.state.story === this.state.stories.length-1) {
-      return this.props.  onComplete && this.props.onComplete();
+      return this.props.onComplete && this.props.onComplete();
     }
 
     this.setState({
@@ -32,7 +32,6 @@ class StoryDesk extends React.Component {
   }
 
   render() {
-    console.log(this.state.stories);
     return (
       <div className={styles.desk}>
         <StoryCard

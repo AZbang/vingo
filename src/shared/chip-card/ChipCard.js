@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Motion, spring, presets} from 'react-motion';
+import {Motion, spring} from 'react-motion';
 import {withSwipeable} from '../index';
 
 import Block from './Block';

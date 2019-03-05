@@ -10,7 +10,7 @@ import stores from './stores';
 
 import App from './App';
 import './assets/theme.css';
-import './assets/fonts.css';
+import './assets/fonts/helvetica-neue.css';
 
 const history = syncHistoryWithStore(createHashHistory(), stores.routing);
 registerServiceWorker();

@@ -1,5 +1,4 @@
 import React from 'react';
-import {Div, Button} from '@vkontakte/vkui';
 import {withShow} from '../index'
 import styles from './EmptySection.module.sass';
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import {inject, observer} from 'mobx-react';
 import {HorizontalScroll} from '@vkontakte/vkui';
 import StoryItem from './StoryItem';
 import styles from './StoriesList.module.sass';
@@ -19,15 +18,15 @@ class StoriesList extends React.Component {
   }
 
   render() {
-    if(this.props.stories.length) {
-      return (
+    return (
+      <div className={styles.wrap}>
         <HorizontalScroll>
           <div className={styles.storiesList}>
             {this.getStoriesList()}
           </div>
         </HorizontalScroll>
-      )
-    } else return null;
+      </div>
+    )
   }
 }
 

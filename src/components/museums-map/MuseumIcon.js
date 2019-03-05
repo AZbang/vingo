@@ -1,7 +1,7 @@
 import React from 'react';
 import './MuseumIcon.css';
-import icon1 from '../assets/classical-building-ios.png';
-import icon2 from '../assets/classical-building-android.png';
+import icon1 from '../assets/emoji/classical-building-ios.png';
+import icon2 from '../assets/emoji/classical-building-android.png';
 
 class MuseumIcon extends React.Component {
   render() {
