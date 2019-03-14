@@ -16,17 +16,19 @@ import StoryView from './views/StoryView';
 import {ChipCard} from './shared';
 import {Emoji} from 'emoji-mart';
 
+import cat from './assets/cat.jpg';
+import pic from './assets/icon.png';
+
 @inject('stories', 'routing', 'media', 'model') @observer
 class App extends React.Component {
   async componentDidMount() {
     this.props.media.getMediaStream();
     await this.props.model.loadModel();
-    await this.props.model.predict('./cat.jpg');
+    await this.props.model.predict(cat);
+    await this.props.model.predict(pic);
   }
-
   onStoryChange = (e) =>
     this.props.routing.push('/' + e.currentTarget.dataset.story);
-
   pushController = () => (
     <Fragment>
       <ChipCard top show type="block" swipeable

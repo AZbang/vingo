@@ -1,2 +1,7 @@
 const { override, addDecoratorsLegacy } = require("customize-cra");
-module.exports = override(addDecoratorsLegacy());
+const setGlobalObject = value => config => {
+  config.output.globalObject = value
+  return config
+}
+
+module.exports = override(setGlobalObject('this'), addDecoratorsLegacy());

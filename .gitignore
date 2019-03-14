@@ -16,6 +16,7 @@
 /psd
 public/*.onnx
 build.json
+src/assets/vectors
 azbang.jks
 .DS_Store
 .env.local

@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react';
 import { Camera, ChipCard } from '../shared';
 import {Emoji} from 'emoji-mart'
 
-@inject('media', 'app')
+@inject('media', 'model', 'app')
 @observer
 class Playground extends React.Component {
   state = {
@@ -23,8 +23,7 @@ class Playground extends React.Component {
     this.setState({
       snapshot: img.src
     });
-
-    // this.props.model.predict(img);
+    this.props.model.predict(img.src);
   }
 
   cameraController = () => {
@@ -34,7 +33,7 @@ class Playground extends React.Component {
       return <Camera
         onSnapshot={this.onSnapshot}
         stream={media.stream}
-        snapshotInterval={500}
+        snapshotInterval={2000}
         snapshotSize={224}
       />
     }
